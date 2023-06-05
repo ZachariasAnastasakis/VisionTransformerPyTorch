@@ -78,6 +78,9 @@ class MultiHeadAttention(nn.Module):
         k_x = self.key(k_x)
         v_x = self.value(v_x)
 
+        # to get the attentions in size (N, num_heads, num_patches, num_patches)
+        # we have to transpose all q,k,v in dimensions 1, 2
+
         dot_product = torch.matmul(q_x, k_x.transpose(-1, -2))  # (N, num_patches, num_heads, num_heads)
         attention = nn.Softmax(-1)(dot_product * self.scale)
 
