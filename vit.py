@@ -40,14 +40,15 @@ class ViT(nn.Module):
 
     def forward(self, x):
         N, _, _, _ = x.shape  # (N, in_channels, img_size, img_size)
+        attention = None
         x = self.img_emb(x)  # (N, num_patches, emb_dim)
         cls_token = self.cls_token.expand(N, -1, -1)  # (N, 1, emb_dim)
         x = torch.cat((cls_token, x), dim=1)  # (N, num_patches+1, emb_dim)
         x = x + self.pos_emb  # (N, num_patches+1, emb_dim)
         for vit_block in self.vit_blocks:
-            x = vit_block(x)
+            x, attention = vit_block(x)
 
         cls_token = x[:, 0]  # (N, emb_dim)
         scores = self.classifier(cls_token)  # (N, num_classes)
 
-        return scores
+        return scores, attention

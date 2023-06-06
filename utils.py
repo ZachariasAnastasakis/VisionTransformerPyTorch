@@ -80,16 +80,21 @@ class MultiHeadAttention(nn.Module):
 
         # to get the attentions in size (N, num_heads, num_patches, num_patches)
         # we have to transpose all q,k,v in dimensions 1, 2
+        q_x = q_x.transpose(1, 2)  # (N, num_heads, num_patches, head_dim)
+        k_x = k_x.transpose(1, 2)  # (N, num_heads, num_patches, head_dim)
+        v_x = v_x.transpose(1, 2)  # (N, num_heads, num_patches, head_dim)
 
-        dot_product = torch.matmul(q_x, k_x.transpose(-1, -2))  # (N, num_patches, num_heads, num_heads)
+        dot_product = torch.matmul(q_x, k_x.transpose(-1, -2))  # (N, num_heads, num_patches, num_patches)
         attention = nn.Softmax(-1)(dot_product * self.scale)
 
-        scaled_dot_product_attention_per_head = torch.matmul(attention, v_x)  # (N, num_patches, num_heads, head_dim)
+        scaled_dot_product_attention_per_head = torch.matmul(attention, v_x)  # (N, num_heads, num_patches, head_dim)
+        scaled_dot_product_attention_per_head = scaled_dot_product_attention_per_head.transpose(1,
+                                                                                                2)  # (N, num_patches, num_heads, head_dim)
         scaled_dot_product_attention = scaled_dot_product_attention_per_head.flatten(2)  # (N, num_patches, emb_dim)
 
         multihead_attention = self.head_projection(scaled_dot_product_attention)
 
-        return multihead_attention
+        return multihead_attention, attention
 
 
 class MLP(nn.Module):
@@ -140,7 +145,9 @@ class ViTBlock(nn.Module):
         self.norm2 = nn.LayerNorm(embed_dim)
 
     def forward(self, x):
-        residual_1 = self.multihead_attention(self.norm1(x)) + x
-        residual_2 = self.mlp(self.norm2(x)) + residual_1
+        res1, attention = self.multihead_attention(self.norm1(x))
+        res1 += x
+        # res = self.multihead_attention(self.norm1(x)) + x
+        res2 = self.mlp(self.norm2(res1)) + res1
 
-        return residual_2
+        return res2, attention
