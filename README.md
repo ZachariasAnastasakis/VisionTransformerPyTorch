@@ -13,13 +13,13 @@ Afterwards, the trained model will be saved to your current directory. You will 
 ## Results on test set
 
 ### MNIST dataset
-<img src="https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/mn.png?token=GHSAT0AAAAAACDQTSIH66EYVG47QZZSEROGZECGW3Q" alt="drawing" width="250"/>
-<img src="https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/mnist_4.png?token=GHSAT0AAAAAACDQTSIHEBWT2OMKQH33CSEQZECGXQQ" alt="drawing" width="250"/>
-<img src="https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/mnist_7.png?token=GHSAT0AAAAAACDQTSIHG7LF7W7BYJWTBXGGZECGYDA" alt="drawing" width="250"/>
+<img src="https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/mn.png?raw=true" alt="drawing" width="250"/>
+<img src="https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/mnist_4.png?raw=true" alt="drawing" width="250"/>
+<img src="https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/mnist_7.png?raw=true" alt="drawing" width="250"/>
 
 ### CIFAR10 dataset
 ![](https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/cifar10_multiple.png?raw=true)
-![](https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/cifar10_multiple_2.png?token=GHSAT0AAAAAACDQTSIGS3MTLPJZHGRTXFXIZECGZAQ)
+![](https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/cifar10_multiple_2.png?raw=true)
 
 The above models are trained only for 10 epochs. Adding more epochs perhaps could lead to better results and thus better attentions.
 
