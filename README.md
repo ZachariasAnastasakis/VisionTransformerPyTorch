@@ -10,7 +10,7 @@ python3 train_vit.py --img_size=32 --in_channels=3 --emb_dim=768 --patch_size=4 
 
 Afterwards, the trained model will be saved to your current directory. You will be able to test it and view the attention maps using the **inference_vis_attn.ipynb**.
 
-## Results on test set
+## Attention maps on test set
 
 ### MNIST dataset
 <img src="https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/mn.png?raw=true" alt="drawing" width="250"/>
