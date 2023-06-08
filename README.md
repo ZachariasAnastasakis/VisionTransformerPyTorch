@@ -18,7 +18,7 @@ Afterwards, the trained model will be saved to your current directory. You will 
 <img src="https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/mnist_7.png?token=GHSAT0AAAAAACDQTSIHG7LF7W7BYJWTBXGGZECGYDA" alt="drawing" width="250"/>
 
 ### CIFAR10 dataset
-![](https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/cifar10_multiple.png?token=GHSAT0AAAAAACDQTSIHGOP5BO2W4UXOHJ5IZECGYUA)
+![](https://github.com/ZachariasAnastasakis/VisionTransformerPyTorch/blob/main/images/cifar10_multiple.png?raw=true)
 ![](https://raw.githubusercontent.com/ZachariasAnastasakis/VisionTransformerPyTorch/main/images/cifar10_multiple_2.png?token=GHSAT0AAAAAACDQTSIGS3MTLPJZHGRTXFXIZECGZAQ)
 
 The above models are trained only for 10 epochs. Adding more epochs perhaps could lead to better results and thus better attentions.
